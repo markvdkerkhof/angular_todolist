@@ -1,0 +1,6 @@
+<app-search-items></app-search-items>
+<p>todo-list works!</p>
+<ul>
+  <li *ngFor="let item of items">
+    {{item.title}} - {{item.date | date: 'dd/MM/yyyy'}}
+  </li>
