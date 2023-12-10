@@ -1,22 +1,33 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CONSTANTS } from '../../../../common/constants';
+import { ItemService } from '../../services/item-service.service';
+import { Item } from '../../models/item';
 
 @Component({
   selector: 'app-todo-item',
-  standalone: true,
-  imports: [],
   templateUrl: './todo-item.component.html',
   styleUrl: './todo-item.component.scss'
+
 })
 export class TodoItemComponent implements OnInit{
 
-selectedItemId: number | undefined;
+  selectedItemId: number | undefined;
+  selectedItem: Item | null = null;
 
-constructor(private _activatedRoute: ActivatedRoute){}
+constructor(private _activatedRoute: ActivatedRoute,
+  private  _router: Router,
+  private _itemService: ItemService){}
+  
   ngOnInit() {  
     this._activatedRoute.params.subscribe((params: Params) => {
+      console.log(params, this._itemService.selectedItem);
       this.selectedItemId = params[CONSTANTS.NAVIGATION_ITEM_ID];
+      this.selectedItem = this._itemService.selectedItem;
     });
+  }
+
+  protected goBack() {
+    this._router.navigate([CONSTANTS.ROUTER_LIST]);
   }
 }

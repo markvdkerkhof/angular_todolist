@@ -7,9 +7,20 @@ import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
   providedIn: 'root'
 })
 export class ItemService {
-  isInitialized = new BehaviorSubject<boolean>(false);
 
+  isInitialized = new BehaviorSubject<boolean>(false);
+  private _selectedItem: Item | null = null;
   private items: Item[] = [];
+
+  get selectedItem(): Item | null {
+    //console.log('get selectedItem', this._selectedItem);
+    return this._selectedItem;
+  }
+
+  set selectedItem(value: Item | null) {
+    //console.log('set selectedItem', value);
+    this._selectedItem = value;    
+  }
 
   constructor(private _itemHttpService: ItemHttpService) { 
     this._itemHttpService.getItems().subscribe(items => {
@@ -20,5 +31,5 @@ export class ItemService {
 
   getItems(): Item[] {
     return this.items;
-  }
+  } 
 }

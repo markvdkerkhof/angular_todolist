@@ -1,6 +1,8 @@
-<app-search-items></app-search-items>
-<p>todo-list works!</p>
+<app-search-items (onSearchUpdated)="highlightFoundItems($event)"></app-search-items>
 <ul>
-  <li *ngFor="let item of items">
-    {{item.title}} - {{item.date | date: 'dd/MM/yyyy'}}
+  <li *ngFor="let item of items">   
+    <div [style.border]="item.found ? '2px solid red' : ''" (click)="itemClicked(item)">
+      {{item.title}} - {{item.date | date: 'dd/MM/yyyy'}}
+    </div>
   </li>
+</ul>  

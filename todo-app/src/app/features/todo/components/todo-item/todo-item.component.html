@@ -1,1 +1,5 @@
-<p>todo-item {{selectedItemId}} works!</p>
+<p>Details of todo-item {{selectedItemId}} </p>
+<p>Id {{selectedItem?.id}} </p>
+<p>Title {{selectedItem?.title}} </p>
+<p>Date {{selectedItem?.date | date: 'dd/MM/yyyy'}} </p>
+<button (click)="goBack()">Back to list</button>

@@ -1,11 +1,26 @@
 export class Item {  
 
+    private _id: number;
     private _title: string;
     private _date: Date;
+    private _found: boolean;
 
-    constructor(title: string, date: Date) {
+    constructor(id: number, title: string, date: Date) {
+        this._id = id;
         this._title = title;
         this._date = date; 
+        this._found = false;
+    }
+
+    public get id(): number { 
+        return this._id; 
+    }
+
+    public set found(value: boolean) {
+        this._found = value;
+    }
+    public get found(): boolean { 
+        return this._found; 
     }
 
     public get title(): string { 
