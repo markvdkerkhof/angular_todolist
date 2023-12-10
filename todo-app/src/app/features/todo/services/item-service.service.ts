@@ -13,12 +13,10 @@ export class ItemService {
   private items: Item[] = [];
 
   get selectedItem(): Item | null {
-    //console.log('get selectedItem', this._selectedItem);
     return this._selectedItem;
   }
 
   set selectedItem(value: Item | null) {
-    //console.log('set selectedItem', value);
     this._selectedItem = value;    
   }
 
@@ -32,4 +30,12 @@ export class ItemService {
   getItems(): Item[] {
     return this.items;
   } 
+
+  addItem(title: string | null | undefined){
+    if (!title) {
+      return;
+    }
+    const newItem = new Item(this.items.length + 1, title);
+    this.items.push(newItem);
+  }
 }

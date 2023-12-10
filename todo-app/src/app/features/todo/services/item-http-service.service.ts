@@ -10,7 +10,7 @@ export class ItemHttpService {
 constructor() { }
   getItems(): Observable<Item[]> {    
     return of ([
-      new Item(1, 'item 1', new Date()), 
-      new Item(2, 'item 2', new Date())]);    
+      new Item(1, 'item 1'), 
+      new Item(2, 'item 2')]);    
   };
 }

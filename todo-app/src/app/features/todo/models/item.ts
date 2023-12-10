@@ -5,13 +5,16 @@ export class Item {
     private _date: Date;
     private _found: boolean;
 
-    constructor(id: number, title: string, date: Date) {
+    constructor(id: number, title: string) {
         this._id = id;
         this._title = title;
-        this._date = date; 
+        this._date = new Date(); 
         this._found = false;
     }
 
+    public set id(value: number) {
+        this._id = value;
+    }
     public get id(): number { 
         return this._id; 
     }

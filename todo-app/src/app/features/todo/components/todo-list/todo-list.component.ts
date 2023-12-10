@@ -45,4 +45,10 @@ export class TodoListComponent implements OnInit, OnDestroy {
             item.found = item.title.includes(searchValue);
         });    
       }
+
+      add() {
+        this._router.navigate([CONSTANTS.ROUTER_ADD_ITEM]);
+
+        console.log('add');
+      }      
 }

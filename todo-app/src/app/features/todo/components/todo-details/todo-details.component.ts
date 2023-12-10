@@ -6,11 +6,11 @@ import { Item } from '../../models/item';
 
 @Component({
   selector: 'app-todo-item',
-  templateUrl: './todo-item.component.html',
-  styleUrl: './todo-item.component.scss'
+  templateUrl: './todo-details.component.html',
+  styleUrl: './todo-details.component.scss'
 
 })
-export class TodoItemComponent implements OnInit{
+export class TodoDetailsComponent implements OnInit{
 
   selectedItemId: number | undefined;
   selectedItem: Item | null = null;
