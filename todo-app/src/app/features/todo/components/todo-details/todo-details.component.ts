@@ -22,7 +22,7 @@ constructor(private _activatedRoute: ActivatedRoute,
   ngOnInit() {  
     this._activatedRoute.params.subscribe((params: Params) => {
       console.log(params, this._itemService.selectedItem);
-      this.selectedItemId = params[CONSTANTS.NAVIGATION_ITEM_ID];
+      this.selectedItemId = params[CONSTANTS.ROUTER_PARAM_ITEM_ID];
       this.selectedItem = this._itemService.selectedItem;
     });
   }
