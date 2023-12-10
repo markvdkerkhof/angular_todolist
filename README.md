@@ -3,7 +3,8 @@
 demo included 'todolist demo.mp4'
 
 Opbouw applicatie:
-Ik heb een dummy http service gecreeerd die middels the rxjs een observable teruggeeft
+
+Er is een dummy http service gecreeerd die middels the rxjs een observable teruggeeft.
 De itemService is verantwoordelijk voor de actuele itemlist. 
 Deze lijst wordt geupdate tijdens het aanmaken van nieuwe items en voor het initieel ophalen vanuit de http service.
 Componenten die geintereseerd zijn in de lijst (TodoListComponent) kunnen zich abboneren op de isInitialized.
