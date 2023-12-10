@@ -30,5 +30,8 @@ export class LoginComponent {
       console.log("Authorized");
       this._router.navigate([CONSTANTS.ROUTER_LIST]);
     }  
+    else {
+      window.alert("Wrong username or password");
+    }
   };
 }
