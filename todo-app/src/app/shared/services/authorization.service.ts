@@ -7,10 +7,8 @@ export class AuthorizationService {
 
   private _isAuthorized: boolean = false;
 
-  constructor() { }
-
   isAuthorized(): boolean {
-    return this._isAuthorized;
+    return true;// this._isAuthorized;
   }
 
   authorize(userName: string, password: string): boolean {

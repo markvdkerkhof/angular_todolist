@@ -1,6 +1,7 @@
 <button (click)="goBack()">Back to list</button>
-<p>Details of todo-item {{selectedItemId}} </p>
-<p>Id {{selectedItem?.id}} </p>
-<p>Title {{selectedItem?.title}} </p>
-<p>Date {{selectedItem?.date | date:  'HH:mm:ss'}} </p>
-
+<p>Details of todo-item {{id}} </p>
+<div *ngIf="selectedItem">
+  <p>Id {{selectedItem.id}} </p>
+  <p>Title {{selectedItem.title}} </p>
+  <p>Date {{selectedItem.date | date: 'HH:mm:ss'}} </p>
+</div>

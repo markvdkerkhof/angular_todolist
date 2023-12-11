@@ -1,10 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-search-items',
   templateUrl: './search-items.component.html',
-  styleUrl: './search-items.component.scss'
+  styleUrl: './search-items.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchItemsComponent implements OnInit {
 

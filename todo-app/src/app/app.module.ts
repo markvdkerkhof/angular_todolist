@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { TodoListComponent } from './features/todo/components/todo-list/todo-list.component';
 import { TodoDetailsComponent } from './features/todo/components/todo-details/todo-details.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { ItemService } from './features/todo/services/item-service.service';
+import { ItemService } from './features/todo/services/item.service';
 import { SearchItemsComponent } from './features/todo/components/search-items/search-items.component';
 import { AddTodoComponent } from './features/todo/components/add-todo/add-todo.component';
 import { CONSTANTS } from './common/constants';
@@ -51,7 +51,7 @@ const ROUTES: Routes = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(ROUTES),
+    RouterModule.forRoot(ROUTES, { bindToComponentInputs: true }),
     SharedModule
   ],
   providers: [

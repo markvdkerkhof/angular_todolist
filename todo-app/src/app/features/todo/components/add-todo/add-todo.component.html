@@ -1,7 +1,6 @@
 <button (click)="goBack()">Back to list</button>
 <form [formGroup]="addTodoForm" (ngSubmit)="onSubmit()" #todoForm="ngForm">
-    <label for="title">Title: </label>
-    <input id="title" type="text" formControlName="title" required>
-    <button type="submit" [disabled]="!addTodoForm.valid">Submit</button>
+  <label for="title">Title: </label>
+  <input id="title" type="text" formControlName="title" required>
+  <button type="submit" [disabled]="!addTodoForm.valid">Submit</button>
 </form>
-

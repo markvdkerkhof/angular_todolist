@@ -1,10 +1,10 @@
 import { Subscription } from 'rxjs';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { NgFor } from '@angular/common';
 import { Router } from '@angular/router';
 import { Item } from '../../models/item';
-import { ItemService } from '../../services/item-service.service';
+import { ItemService } from '../../services/item.service';
 import { SearchItemsComponent } from "../search-items/search-items.component";
 import { CONSTANTS } from '../../../../common/constants';
 
@@ -12,14 +12,18 @@ import { CONSTANTS } from '../../../../common/constants';
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoListComponent implements OnInit, OnDestroy {
 
   protected items: Item[] = [];
 
   private _itemServiceInitializedSubscription: Subscription | null = null;
+  private searchValue: string = '';
 
-  constructor(private _itemService: ItemService, private _router: Router) { }
+  constructor(
+    private _itemService: ItemService,
+    private _router: Router) { }
 
   ngOnInit() {
     this._itemServiceInitializedSubscription = this._itemService.isInitialized.subscribe(isInitialized => {
@@ -44,9 +48,11 @@ export class TodoListComponent implements OnInit, OnDestroy {
     this._router.navigate([CONSTANTS.ROUTER_ITEM, item.id]);
   }
 
-  protected highlightFoundItems(searchValue: string) {
-    this.items.forEach(item => {
-      item.found = item.title.includes(searchValue);
-    });
+  protected searchUpdated(searchValue: string) {
+    this.searchValue = searchValue;
+  }
+
+  protected highlightItem(item: Item): boolean {
+    return item.title.includes(this.searchValue);
   }
 }

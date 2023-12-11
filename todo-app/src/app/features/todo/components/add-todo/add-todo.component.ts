@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CONSTANTS } from '../../../../common/constants';
-import { ItemService } from '../../services/item-service.service';
+import { ItemService } from '../../services/item.service';
 import { Item } from '../../models/item';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-todo',
   templateUrl: './add-todo.component.html',
-  styleUrl: './add-todo.component.scss'
-
+  styleUrl: './add-todo.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddTodoComponent {
 
@@ -26,7 +26,6 @@ export class AddTodoComponent {
   protected onSubmit() {
     this._itemService.addItem(this.addTodoForm?.value?.title);
     this.goBack();
-
   };
 
   protected goBack() {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ItemHttpService } from './item-http-service.service';
+import { ItemHttpService } from './item-http.service';
 import { Item } from '../models/item';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
@@ -21,7 +21,8 @@ export class ItemService {
     this._selectedItem = value;
   }
 
-  constructor(private _itemHttpService: ItemHttpService) {
+  constructor(
+    private _itemHttpService: ItemHttpService) {
     this._itemHttpService.getItems().subscribe(items => {
       this.items = items;
       this.isInitialized.next(true);

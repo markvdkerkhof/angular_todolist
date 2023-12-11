@@ -1,10 +1,10 @@
 <div><button (click)="add()">New item</button></div>
-<br/>
-<app-search-items (onSearchUpdated)="highlightFoundItems($event)"></app-search-items>
+<br />
+<app-search-items (onSearchUpdated)="searchUpdated($event)"></app-search-items>
 <ul>
-  <li *ngFor="let item of items">   
-    <div [style.border]="item.found ? '2px solid red' : ''" (click)="itemClicked(item)">
+  <li *ngFor="let item of items">
+    <div [style.border]="highlightItem(item) ? '2px solid red' : ''" (click)="itemClicked(item)">
       {{item.title}} - {{item.date | date: 'HH:mm:ss'}}
     </div>
   </li>
-</ul>  
+</ul>

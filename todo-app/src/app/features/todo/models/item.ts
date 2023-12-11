@@ -3,13 +3,11 @@ export class Item {
   private _id: number;
   private _title: string;
   private _date: Date;
-  private _found: boolean;
 
   constructor(id: number, title: string) {
     this._id = id;
     this._title = title;
     this._date = new Date();
-    this._found = false;
   }
 
   public set id(value: number) {
@@ -17,13 +15,6 @@ export class Item {
   }
   public get id(): number {
     return this._id;
-  }
-
-  public set found(value: boolean) {
-    this._found = value;
-  }
-  public get found(): boolean {
-    return this._found;
   }
 
   public get title(): string {

@@ -1,29 +1,29 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CONSTANTS } from '../../../../common/constants';
-import { ItemService } from '../../services/item-service.service';
+import { ItemService } from '../../services/item.service';
 import { Item } from '../../models/item';
 
 @Component({
   selector: 'app-todo-item',
   templateUrl: './todo-details.component.html',
-  styleUrl: './todo-details.component.scss'
-
+  styleUrl: './todo-details.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TodoDetailsComponent implements OnInit {
+export class TodoDetailsComponent implements OnChanges {
+  @Input() id?: number;
 
   protected selectedItem: Item | null = null;
-  protected selectedItemId: number | undefined;
 
-  constructor(private _activatedRoute: ActivatedRoute,
+  constructor(
     private _router: Router,
     private _itemService: ItemService) { }
 
-  ngOnInit() {
-    this._activatedRoute.params.subscribe((params: Params) => {
-      this.selectedItemId = params[CONSTANTS.ROUTER_PARAM_ITEM_ID];
-      this.selectedItem = this._itemService.selectedItem;
-    });
+  ngOnChanges() {
+    this.selectedItem = this._itemService.selectedItem;
+    if (this.selectedItem?.id != this.id) {
+      this.goBack();
+    }
   }
 
   protected goBack() {
