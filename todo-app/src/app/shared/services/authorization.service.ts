@@ -6,12 +6,12 @@ import { Injectable } from '@angular/core';
 export class AuthorizationService {
 
   private _isAuthorized: boolean = false;
-  
-  public isAuthorized(): boolean {
-    console.log('isAuthorizedAsMethod', this._isAuthorized);    
+
+  constructor() { }
+
+  isAuthorized(): boolean {
     return this._isAuthorized;
   }
-  constructor() { }
 
   authorize(userName: string, password: string): boolean {
     if (userName === 'admin' && password === 'admin') {

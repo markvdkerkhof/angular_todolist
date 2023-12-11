@@ -14,10 +14,9 @@ describe('ItemHttpServiceService', () => {
     expect(service).toBeTruthy();
   });
 
-   it('getItems shoud return 2 items', () => {
-     service.getItems().subscribe(items => {
-      console.log('items', items);
-       expect(items?.length).toBe(2);
-     });  
-   });
+  it('getItems shoud return 2 items', () => {
+    service.getItems().subscribe(items => {
+      expect(items?.length).toBe(2);
+    });
+  });
 });

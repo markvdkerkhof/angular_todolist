@@ -10,18 +10,17 @@ import { Item } from '../../models/item';
   styleUrl: './todo-details.component.scss'
 
 })
-export class TodoDetailsComponent implements OnInit{
+export class TodoDetailsComponent implements OnInit {
 
-  selectedItemId: number | undefined;
-  selectedItem: Item | null = null;
+  protected selectedItem: Item | null = null;
+  protected selectedItemId: number | undefined;
 
-constructor(private _activatedRoute: ActivatedRoute,
-  private  _router: Router,
-  private _itemService: ItemService){}
-  
-  ngOnInit() {  
+  constructor(private _activatedRoute: ActivatedRoute,
+    private _router: Router,
+    private _itemService: ItemService) { }
+
+  ngOnInit() {
     this._activatedRoute.params.subscribe((params: Params) => {
-      console.log(params, this._itemService.selectedItem);
       this.selectedItemId = params[CONSTANTS.ROUTER_PARAM_ITEM_ID];
       this.selectedItem = this._itemService.selectedItem;
     });

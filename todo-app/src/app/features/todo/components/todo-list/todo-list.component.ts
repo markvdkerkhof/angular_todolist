@@ -9,46 +9,44 @@ import { SearchItemsComponent } from "../search-items/search-items.component";
 import { CONSTANTS } from '../../../../common/constants';
 
 @Component({
-    selector: 'app-todo-list',
-    templateUrl: './todo-list.component.html',
-    styleUrl: './todo-list.component.scss',
+  selector: 'app-todo-list',
+  templateUrl: './todo-list.component.html',
+  styleUrl: './todo-list.component.scss',
 })
 export class TodoListComponent implements OnInit, OnDestroy {
-    private _itemServiceInitializedSubscription: Subscription | null = null;
 
-    protected items: Item[] = [];
- 
-    constructor(private _itemService: ItemService, private _router: Router) { }
+  protected items: Item[] = [];
 
-    ngOnInit() {  
-        this._itemServiceInitializedSubscription = this._itemService.isInitialized.subscribe(isInitialized => {
-             if (isInitialized) {
-                 this.items = this._itemService.getItems();
-             }
-         });
+  private _itemServiceInitializedSubscription: Subscription | null = null;
+
+  constructor(private _itemService: ItemService, private _router: Router) { }
+
+  ngOnInit() {
+    this._itemServiceInitializedSubscription = this._itemService.isInitialized.subscribe(isInitialized => {
+      if (isInitialized) {
+        this.items = this._itemService.getItems();
       }
+    });
+  }
 
-      ngOnDestroy() {
-        if (this._itemServiceInitializedSubscription){
-          this._itemServiceInitializedSubscription;
-        }
-      }
+  ngOnDestroy() {
+    if (this._itemServiceInitializedSubscription) {
+      this._itemServiceInitializedSubscription;
+    }
+  }
 
-      protected itemClicked(item: Item){
-        console.log(item);
-        this._itemService.selectedItem = item;
-        this._router.navigate([CONSTANTS.ROUTER_ITEM, item.id]);
-      }
+  add() {
+    this._router.navigate([CONSTANTS.ROUTER_ADD_ITEM]);
+  }
 
-      protected highlightFoundItems(searchValue: string) {   
-        this.items.forEach(item => {
-            item.found = item.title.includes(searchValue);
-        });    
-      }
+  protected itemClicked(item: Item) {
+    this._itemService.selectedItem = item;
+    this._router.navigate([CONSTANTS.ROUTER_ITEM, item.id]);
+  }
 
-      add() {
-        this._router.navigate([CONSTANTS.ROUTER_ADD_ITEM]);
-
-        console.log('add');
-      }      
+  protected highlightFoundItems(searchValue: string) {
+    this.items.forEach(item => {
+      item.found = item.title.includes(searchValue);
+    });
+  }
 }

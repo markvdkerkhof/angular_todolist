@@ -18,21 +18,21 @@ import { Observable } from 'rxjs';
 import { AuthorizationService } from './shared/services/authorization.service';
 
 const isAuthorized: CanActivateFn =
-    (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
-        const authorizationService = inject(AuthorizationService);
-        if (!authorizationService.isAuthorized()) {
-            inject(Router).navigate([CONSTANTS.ROUTER_LOGIN]);
-            return false;
-        }
-        return true;
-    };
+  (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+    const authorizationService = inject(AuthorizationService);
+    if (!authorizationService.isAuthorized()) {
+      inject(Router).navigate([CONSTANTS.ROUTER_LOGIN]);
+      return false;
+    }
+    return true;
+  };
 
 const ROUTES: Routes = [
-    { path: CONSTANTS.ROUTER_LOGIN, component: LoginComponent },
-    { path: CONSTANTS.ROUTER_LIST, component: TodoListComponent, canActivate: [isAuthorized] },
-    { path: CONSTANTS.ROUTER_ITEM + '/:' + CONSTANTS.ROUTER_PARAM_ITEM_ID, component: TodoDetailsComponent, canActivate: [isAuthorized] },
-    { path: CONSTANTS.ROUTER_ADD_ITEM, component: AddTodoComponent, canActivate: [isAuthorized] },
-    { path: '**', component: LoginComponent  },
+  { path: CONSTANTS.ROUTER_LOGIN, component: LoginComponent },
+  { path: CONSTANTS.ROUTER_LIST, component: TodoListComponent, canActivate: [isAuthorized] },
+  { path: CONSTANTS.ROUTER_ITEM + '/:' + CONSTANTS.ROUTER_PARAM_ITEM_ID, component: TodoDetailsComponent, canActivate: [isAuthorized] },
+  { path: CONSTANTS.ROUTER_ADD_ITEM, component: AddTodoComponent, canActivate: [isAuthorized] },
+  { path: '**', component: LoginComponent },
 
 ];
 
@@ -45,9 +45,9 @@ const ROUTES: Routes = [
     SearchItemsComponent,
     LoginComponent
   ],
-  imports: [    
+  imports: [
     BrowserModule,
-    RouterOutlet,        
+    RouterOutlet,
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
