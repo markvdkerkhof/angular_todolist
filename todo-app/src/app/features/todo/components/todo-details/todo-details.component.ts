@@ -11,7 +11,7 @@ import { Item } from '../../models/item';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TodoDetailsComponent implements OnChanges {
-  @Input() id?: number;
+  @Input({ required: true }) id?: number;
 
   protected selectedItem: Item | null = null;
 

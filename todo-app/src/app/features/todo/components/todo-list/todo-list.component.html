@@ -2,9 +2,11 @@
 <br />
 <app-search-items (searchUpdated)="searchUpdated($event)"></app-search-items>
 <ul>
-  <li *ngFor="let item of items">
+  @for(item of items; track item.id) {
+  <li>
     <div [style.border]="highlightItem(item) ? '2px solid red' : ''" (click)="itemClicked(item)">
       {{item.title}} - {{item.date | date: 'HH:mm:ss'}}
     </div>
   </li>
+  }
 </ul>
