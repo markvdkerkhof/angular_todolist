@@ -34,5 +34,5 @@ export class LoginComponent {
     else {
       window.alert("Wrong username or password");
     }
-  };
+  }
 }

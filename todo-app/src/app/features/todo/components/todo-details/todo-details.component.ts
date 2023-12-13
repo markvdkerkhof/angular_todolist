@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { CONSTANTS } from '../../../../common/constants';
 import { ItemService } from '../../services/item.service';
 import { Item } from '../../models/item';

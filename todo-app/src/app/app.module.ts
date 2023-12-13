@@ -3,7 +3,7 @@ import { NgModule, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRouteSnapshot, CanActivateFn, Route, Router, RouterModule, RouterOutlet, RouterStateSnapshot, Routes, UrlSegment } from '@angular/router';
+import { CanActivateFn, Router, RouterModule, RouterOutlet, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './features/todo/components/todo-list/todo-list.component';
 import { TodoDetailsComponent } from './features/todo/components/todo-details/todo-details.component';
@@ -14,11 +14,10 @@ import { AddTodoComponent } from './features/todo/components/add-todo/add-todo.c
 import { CONSTANTS } from './common/constants';
 import { SharedModule } from './shared/shared.module';
 import { LoginComponent } from './shared/features/login/login.component';
-import { Observable } from 'rxjs';
 import { AuthorizationService } from './shared/services/authorization.service';
 
 const isAuthorized: CanActivateFn =
-  (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+  () => {
     const authorizationService = inject(AuthorizationService);
     if (!authorizationService.isAuthorized()) {
       inject(Router).navigate([CONSTANTS.ROUTER_LOGIN]);

@@ -1,11 +1,8 @@
 import { Subscription } from 'rxjs';
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
-import { NgFor } from '@angular/common';
 import { Router } from '@angular/router';
 import { Item } from '../../models/item';
 import { ItemService } from '../../services/item.service';
-import { SearchItemsComponent } from "../search-items/search-items.component";
 import { CONSTANTS } from '../../../../common/constants';
 
 @Component({

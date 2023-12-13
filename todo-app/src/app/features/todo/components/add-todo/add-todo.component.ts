@@ -26,7 +26,7 @@ export class AddTodoComponent {
   protected onSubmit() {
     this._itemService.addItem(this.addTodoForm?.value?.title);
     this.goBack();
-  };
+  }
 
   protected goBack() {
     this._router.navigate([CONSTANTS.ROUTER_LIST]);

@@ -1,6 +1,6 @@
 <div><button (click)="add()">New item</button></div>
 <br />
-<app-search-items (onSearchUpdated)="searchUpdated($event)"></app-search-items>
+<app-search-items (searchUpdated)="searchUpdated($event)"></app-search-items>
 <ul>
   <li *ngFor="let item of items">
     <div [style.border]="highlightItem(item) ? '2px solid red' : ''" (click)="itemClicked(item)">

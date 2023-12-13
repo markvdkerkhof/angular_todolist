@@ -8,16 +8,16 @@ import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from
 })
 export class SearchItemsComponent implements OnInit {
 
-  @Output() onSearchUpdated = new EventEmitter<string>();
+  @Output() searchUpdated = new EventEmitter<string>();
 
   searchValue: string = '';
 
   ngOnInit() {
     this.searchValue = 'item 1';
-    this.onSearchUpdated.emit(this.searchValue);
+    this.searchUpdated.emit(this.searchValue);
   }
 
   protected search() {
-    this.onSearchUpdated.emit(this.searchValue);
+    this.searchUpdated.emit(this.searchValue);
   }
 }
